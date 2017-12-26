@@ -1,0 +1,21 @@
+= form_for(@team) do |f|
+  - if @team.errors.any?
+    - @team.errors.full_messages.each do |msg|
+      %ul
+        %li.form-errors= msg
+
+  .form-group.row
+    .col-sm-1.col-form-label
+      = f.label :name
+    .col-sm-4
+      = f.text_field :name, class: 'form-control'
+
+  .form-group.row.file-upload-box
+    .col-sm-1.col-form-label.file-fields
+      = f.label :logo
+    .col-sm-3.file-fields
+      = f.file_field :logo
+    .col-sm-1
+      = image_tag @team.logo.url, height: "100px", width: "100px", alt: "logo" if params['action'] == 'edit'
+
+  = f.button :submit, class: 'btn btn-lg btn-primary'

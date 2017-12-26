@@ -1,0 +1,11 @@
+.row.col-sm-6.team-box
+  .col-sm-4.team-logo-box
+    = team.name
+    = image_tag team.logo, width: '100px', height: '100px'
+  .col-sm-4.team-text-box
+    %br= "craeted at: #{team.created_at.strftime("%d %B %Y,%k:%M")}"
+    %br= "owner: #{team.user.name}"
+  .col-sm-4.team-actions-box
+    - if can? :menage, team
+      = link_to "edit", edit_team_path(team), class: 'btn btn-primary'
+      = link_to "delete", team_path(team), method: :delete, class: 'btn btn-danger'

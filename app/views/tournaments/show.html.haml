@@ -1,0 +1,7 @@
+%h1= @tournament.name
+%h3 Registered Teams:
+- if @tournament.teams.any?
+  - @tournament.teams.each do |team|
+    = render 'shared/team', team: team
+- else
+  %p There are no registered teams yet

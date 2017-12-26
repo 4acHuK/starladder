@@ -1,0 +1,10 @@
+- if can? :create, Team
+  .col-sm-12
+    = link_to 'create team', new_team_path(@team), class: 'btn btn-lg btn-success create-button'
+
+%h1 Teams:
+- if @teams.any?
+  - @teams.each do |team|
+    = render 'shared/team', team: team
+- else
+  %p There are no teams yet

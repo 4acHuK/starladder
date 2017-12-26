@@ -1,0 +1,6 @@
+%h1 Tournaments:
+- if @tournaments.any?
+  - @tournaments.each do |tournament|
+    = render 'tournament', tournament: tournament
+- else
+  %p There are no tournaments yet

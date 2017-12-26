@@ -1,0 +1,12 @@
+%nav.navbar.navbar-light.bg-light
+  .container
+    %a.navbar-brand{href: root_path}
+      %b= "StarLadder"
+    %ul.nav.navbar-nav.mr-auto
+      %li.nav-item
+        = link_to 'Tournaments', tournaments_path, class: 'nav-link'
+    %ul.nav.navbar-nav.navbar-right
+      - if current_user
+        = link_to 'Logout', sessions_path, method: :delete
+      - else
+        = link_to 'Login', '/auth/starladder'

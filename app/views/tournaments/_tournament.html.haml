@@ -1,0 +1,12 @@
+.row.col-sm-12.tournament-box{id: "tournament-#{tournament.id}"}
+  .tournament-link.col-sm-4
+    = link_to tournament.name, tournament_path(tournament)
+  .tournament-teams.col-sm-4
+    = "Teams: #{tournament.teams.count}"
+  .action-buttons.col-sm-4
+    - if can? :leave_tournament, tournament
+      = link_to "Leave", leave_tournament_tournament_path(tournament, team_id: current_user.team.id), method: :post,
+                remote: true, class: 'btn btn-danger btn-xs'
+    - if can? :enter_tournament, tournament
+      = link_to "Register", enter_tournament_tournament_path(tournament, team_id: current_user.team.id), method: :post,
+                remote: true, class: 'btn btn-success btn-xs'
